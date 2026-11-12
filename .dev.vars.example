@@ -1,0 +1,12 @@
+# Copy to .dev.vars for local development. Never commit real secrets.
+# Use a unique local value. Production uses a Wrangler secret.
+BETTER_AUTH_SECRET = "replace-with-a-random-secret-of-at-least-32-characters"
+APP_ORIGIN = "http://localhost:5173"
+
+# Optional: configure Cloudflare Turnstile test keys for local challenge testing.
+# TURNSTILE_SECRET_KEY = "1x0000000000000000000000000000000AA"
+# TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
+
+# Optional: Resend email delivery for email verification and password resets.
+# EMAIL_API_KEY = "re_..."
+# EMAIL_FROM = "RETRAC Cribbage <cribbage@your-verified-domain.example>"

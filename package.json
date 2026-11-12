@@ -1,0 +1,61 @@
+{
+  "name": "cribbage",
+  "version": "1.0.0",
+  "description": "RETRAC Cribbage — a secure, server-authoritative cribbage game.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"wrangler dev --port 8787 --infer-origin-from-routes=false --var APP_ORIGIN:http://localhost:5173\" \"vite --host 0.0.0.0\"",
+    "dev:worker": "wrangler dev --port 8787 --infer-origin-from-routes=false --var APP_ORIGIN:http://localhost:5173",
+    "dev:web": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "db:migrate:local": "wrangler d1 migrations apply retrac-cribbage --local",
+    "db:clear-test-limits:local": "wrangler d1 execute retrac-cribbage --local --command \"DELETE FROM rate_limits\"",
+    "db:migrate:remote": "wrangler d1 migrations apply retrac-cribbage --remote",
+    "preview": "wrangler dev --port 8787 --infer-origin-from-routes=false --var APP_ORIGIN:http://localhost:5173",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retrac-ca/cribbage.git"
+  },
+  "keywords": [
+    "cribbage",
+    "cloudflare",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/retrac-ca/cribbage/issues"
+  },
+  "homepage": "https://github.com/retrac-ca/cribbage#readme",
+  "dependencies": {
+    "better-auth": "1.7.21",
+    "hono": "^4.13.17",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261110.1",
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.9",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "jsdom": "^31.0.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.160.0"
+  }
+}

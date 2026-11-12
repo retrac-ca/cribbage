@@ -1,0 +1,20 @@
+name = "cribbage"
+main = "src/worker/app.ts"
+compatibility_date = "2026-11-10"
+workers_dev = true
+routes = [{ pattern = "crib.retrac.ca", custom_domain = true }]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "retrac-cribbage"
+database_id = "29fe0dcd-a2a5-477a-b0af-9a5c20deadea"
+migrations_dir = "migrations"
+
+[vars]
+APP_ORIGIN = "https://crib.retrac.ca"

@@ -147,3 +147,13 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Local Worker secrets (keep .dev.vars.example tracked)
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Cloudflare local state and browser-test artifacts
+.wrangler/
+playwright-report/
+test-results/
